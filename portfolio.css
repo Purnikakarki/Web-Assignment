@@ -10,16 +10,17 @@
 body{
     background: #0c0c0f;
     color:#e5e7eb;
-    display:flex;
-    flex-direction:column;
+    display:grid;
+    grid-template-rows: auto 1fr auto;
     min-height:100vh;
 }
 
 /*Header Section */
 
 header{
-    display:flex;
-    position:fixed;
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    position:sticky;
     top:0;
     width:100%;
     padding: 2rem 10%;
@@ -36,7 +37,7 @@ header{
     border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-Logo{
+.Logo{
     font-size:2rem;
     font-weight:700;
     background: linear-gradient(
@@ -46,6 +47,7 @@ Logo{
     );
     background-clip: text;
     color:transparent;
+    justify-self:start;
 
 }
 /*Hamburger section*/
@@ -64,8 +66,14 @@ Logo{
 }
 
 /*Menu Section*/
+
+nav{
+    justify-self:end;
+}
 .menu{
-    display:flex;
+    display:inline-grid;
+    grid-auto-flow:column;
+    gap:25px;
     list-style:none;
 }
 
@@ -82,17 +90,32 @@ Logo{
 
 /*Hero Section */
 .main-content{
-    display:flex;
-    justify-content:center;
+    display:grid;
+    grid-template-columns:40% 60%;
     align-items: center;
     gap:50px;
-    flex:1;
-    padding:120px 10px 40px;
+    padding:40px 10% 40px;
+    overflow-x:hidden;
+}
+/*Image Section*/
+.image{
+    display:grid;
+    place-items:center;
+}
+
+.image img{
+    max-width: 100%;
+    max-width:300px;
+    height:auto;
+    border-radius:18%;
+    border: 2px solid rgb(222,34,182,0.6);
+    box-shadow: 0 15px 35px rgb(172, 21, 139);
 }
 
 .hero-content{
-    flex:0 0 70%;
     max-width:600px;
+    justify-self:start;
+    padding-left:0;
 }
 
 .hero-content h3{
@@ -135,26 +158,9 @@ Logo{
 }
 
 .hero-text{
-    font-size: 1.1 rem;
+    font-size: 1.1rem;
     line-height:1.7;
     color:#e4e7f1;
-}
-
-/*Image Section*/
-.image{
-    flex:0 0 30%;
-    display:flex;
-    justify-content:center;
-    align-items: center;
-}
-
-.image img{
-    max-width: 100%;
-    width:300px;
-    height:auto;
-    border-radius:18%;
-    border: 2px solid rgb(222,34,182,0.6);
-    box-shadow: 0 15px 35px rgb(172, 21, 139);
 }
 
 /*Footer*/
@@ -162,8 +168,10 @@ footer{
     background: #020617;
     color:9ca3af;
     text-align: center;
-    padding: 20px 10%;
-    font-size:0.9 rem;
+    padding: 10px 10%;
+    font-size:0.9rem;
+    line-height:4;
+    align-self:end;
     border-top:1px solid rgba(255,255,255,0.08);
 }
 
@@ -171,57 +179,78 @@ footer{
 
 @media(max-width:768px){
     header{
-        justify-content:space-between;
+        grid-template-columns: auto 1fr auto;
         padding:1.5rem 5%;
+        position: sticky;
+        top:0;
+        z-index:100;
+        align-items:center;
     }
+    
     .hamburger{
         display:block;
-        order:2;
         font-size:2rem;
         color:#00abff;
         cursor:pointer;
-        z-index: 101;
+        justify-self:end;
+        z-index:101;
     }
 
     .menu{
-        flex-direction:column;
-        display:flex;
+        display:grid;
+        grid-auto-rows:auto;
         position:fixed;
+        grid-auto-flow:row;
         top:0;
-        right:-240px;
+        right:-240;
         width:220px;
         height:auto;
         gap:20px;
         background:rgba(0,0,0,0.8);
         padding:80px 20px;
-        transition:right 0.3s ease;
+        transition:height 0.3s ease;
         z-index: 100;
-        border-radius:0 0 0 10px;
-        z-index:100;
-        overflow-y:auto;
+        justify-items:center;
+        overflow:hidden;
     }
-
     /*Show mwnu when checkbox is checked*/
     .menu-toggle:checked ~ nav .menu{
         right:0;
     }
 
     .menu li a{
-        margin-left:0;
-        font-size:1.2rem;
+        font-size: 1.2 rem;
+        color:white;
+        text-decoration:none;
+        font-weight:500;
+        padding:12px 0;
+        display:block;
+        width:100%;
+        text-align:center;
     }
     .main-content{
-        flex-direction:column;
+        display:grid;
+        grid-template-columns:1fr;
+        grid-template-rows:auto auto;
         text-align:center;
-        gap:40px;
-        padding: 140px 10px 60px;
+        gap:30px;
+        padding: 50px 5% 40px;
+        text-align:center;
+        overflow-x: hidden;
+    }
+    .image{
+        justify-self:center;
+        order:1;
     }
     .image img{
         width:220px;
+        max-width:100%;
+        height:auto;
     }
     .hero-content{
-        flex:none;
+        order:2;
         max-width:100%;
+        justify-self:center;
     }
     .hero-content h1{
         font-size:2.5rem;
@@ -229,7 +258,7 @@ footer{
     footer{
         padding: 20px 5%;
         font-size: 0.85rem;
-        flex-shrink:0;
+        line-height:1.4;
     }
 
 }

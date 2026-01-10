@@ -27,32 +27,37 @@
             <h1> Get in Touch</h1>
             <p>If you have any queries or feedback, fill in the form to reach out.</p>
         </section>
-        <form action ="mailto:purnikakarki1@gmail.com?subject=Portfolio%20contact" method="post" enctype="text/plain">
-            <div class="form-group">
-                <label for="firstname">First Name</label>
-                <input type="text" id="first-name" name="First Name" required>
-            </div>
 
+        <form action ="mailto:purnikakarki1@gmail.com" method="post" enctype="text/plain">
             <div class="name-row">
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" name="First Name" required>
+                </div>
+
                 <div class="form-group">
                     <label for="last-name"> Last Name</label>
                     <input type="text" id="last-name" name="Last Name" required>
                 </div>
+            </div>
 
-                <div class ="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="Email" required>
-                </div>
+            <div class ="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="Email" required>
             </div>
 
             <div class ="form-group">
                 <label for="message">Message</label>
                 <textarea id ="message" name="Message" required></textarea>
             </div>
-            <button type="submit">Submit</button>
 
+            <div class="button-row">
+                <button type="submit">Submit</button>
+                <button type="reset">Clear</button>
+            </div>
         </form>
         <section class="contact-info">
+            <h2>Reach me out</h2>
             <div class="info-item">
                 <i class="fa-solid fa-envelope"></i>
                 <span>purnikakarki1@gmail.com</span>
@@ -61,10 +66,7 @@
                 <i class="fa-solid fa-phone"></i>
                 <span>9765221130</span>
             </div>
-        </section>
-        <section class="contact-icons">
             <div class="social-row">
-                </a>
                 <a href="https://github.com/Purnikakarki" target="_blank" aria-label="Github">
                     <i class="fa-brands fa-github"></i>
                 </a>

@@ -13,6 +13,7 @@ body{
     display:grid;
     grid-template-rows: auto 1fr auto;
     min-height:100vh;
+    margin:0;
 }
 
 /*Header Section */
@@ -45,8 +46,9 @@ header{
         #e5e7eb,
         #60a5fa
     );
-    background-clip: text;
-    color:transparent;
+    color: #60a5fa;/*fallback*/
+    background-clip:text;
+    color: transparent;
     justify-self:start;
 
 }
@@ -129,7 +131,7 @@ nav{
 .hero-content h1{
     color:#0ef;
     font-size:3.5rem;
-    font-weight: 700px;
+    font-weight: 700;
     margin: 5px 0;
     line-height:1.1;
 }
@@ -167,19 +169,36 @@ nav{
 /*Footer*/
 footer{
     background: #020617;
-    color:9ca3af;
-    text-align: center;
-    padding: 10px 10%;
+    color:#9ca3af;
+    text-align:center;
+    padding:24px 12px;
     font-size:0.9rem;
-    line-height:4;
-    align-self:end;
+    line-height:1.5;
     border-top:1px solid rgba(255,255,255,0.08);
-    position:relative;
+    width:100%;
 }
+
 
 /* Mobile menu toggling*/
 
 @media(max-width:768px){
+    body{
+        display:grid;
+        grid-template-rows:auto 1fr auto;
+        min-height:100vh;
+    }
+
+    body>section,
+    .main-content, 
+    .projects-section, 
+    .Contact-details,
+    .Video-Demonstration,
+    .Site-Report {
+        display:block;
+        min-height:auto;
+        padding: 2rem 10%;
+    }
+
     header{
         grid-template-columns: auto 1fr auto;
         padding:1.5rem 5%;
@@ -204,7 +223,7 @@ footer{
         position:fixed;
         grid-auto-flow:row;
         top:0;
-        right:-240;
+        right:-240px;
         width:220px;
         height:auto;
         gap:20px;
@@ -221,7 +240,7 @@ footer{
     }
 
     .menu li a{
-        font-size: 1.2 rem;
+        font-size: 1.2rem;
         color:white;
         text-decoration:none;
         font-weight:500;
@@ -258,10 +277,10 @@ footer{
         font-size:2.5rem;
     }
     footer{
-        margin-top:30px;
-        padding: 15px 5%;
-        font-size: 0.85rem;
-        line-height:1.4;
+        padding:18px 10px;
+        font-size:0.9rem;
+        justify-self:stretch;
+        grid-row:3;
     }
 
 }
@@ -397,18 +416,16 @@ footer{
 
 
 .Contact-details h1{
-    font-size: 3rem;
-    font-weight:800;
+    font-size: 2.5rem;
+    font-weight:600;
     color:#60a5fa;
-    background:linear-gradient(90deg, #60a5fa, #0ef);
-    background-clip:text;
-    color:transparent;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+    text-shadow: 1px 0 0 #0ef,
+                -1px 0 0 #6366f1;
     margin-bottom:15px;
 }
 
 .Contact-details p{
-    font-size: 1rem;
+    font-size: 1.2rem;
     color:#cbd5f1;
     max-width:600px;
     margin: 0 auto;
@@ -477,7 +494,7 @@ button{
     font-weight: 600;
     cursor:pointer;
     font-size:1rem;
-    transition:background 0.3 ease, transform 0.2s ease;
+    transition:background 0.3s ease, transform 0.2s ease;
     width:120px;
     text-align:center;
 }
@@ -523,6 +540,15 @@ button[type="reset"]:hover{
     font-size: 1rem;
 
 }
+
+.social-row{
+    display:grid;
+    grid-auto-flow:column;
+    gap:10px;
+    justify-content:center;
+    margin-top:10px;
+}
+
 .contact-info .social-row a {
     color: #60a5fa;
     font-size:1.5rem;
@@ -536,7 +562,7 @@ button[type="reset"]:hover{
 /* Mobile Responsive view*/
 @media (max-width: 768px){
     .Contact-details p{
-        font-size:0.95 rem;
+        font-size:0.95rem;
         max-width: 95%;
         line-height:1.55;
         padding: 0 10px;
@@ -550,7 +576,7 @@ button[type="reset"]:hover{
         grid-template-columns:1fr;
     }
     .button-row{
-        grid-template-columns:1fr,1fr;
+        grid-template-columns:1fr 1fr;
     }
     .button-row{
         justify-content:start;
@@ -558,5 +584,213 @@ button[type="reset"]:hover{
     .contact-info{
         padding:10px;
     }
+}
+
+/*video Demonstration Page css*/
+.Video-Demonstration{
+    display: grid;
+    grid-template-rows:auto auto auto auto;
+    gap:1rem;
+    align-items:start;
+    padding:2rem;
+    max-width:800px;
+    margin:2rem auto;
+}
+
+.Video-Demonstration h1{
+    text-align:center;
+    margin:0;
+    font-size:2.5rem;
+    color:#60a5fa;
+}
+
+.Video-intro{
+    text-align:center;
+    margin-top:0.5rem;
+}
+
+.Video-intro p{
+    max-width:650px;
+    margin: 0 auto;
+    color: #e5e7eb;
+    line-height:1.6;
+}
+
+.video-wrapper{
+    width:100%;
+    max-width:600px;
+    aspect-ratio:16/9;
+    background-color:#020617;
+    margin:1rem auto;
+    border-radius:14px;
+    overflow:hidden;
+}
+
+.video-wrapper iframe{
+    width:100%;
+    height:100%;
+    border:none;
+    border-radius:12px;
+}
+
+.video-link-box{
+    text-align:center;
+    margin-top:0.5rem;
+}
+
+.video-link-box a{
+    display:inline-block;
+    padding:0.6rem 1.4rem;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:600;
+    background:linear-gradient(90deg,#6366f1,#22d3ee);
+    color:#020617;
+    transition:opacity 0.3s;
+}
+.video-link-box a:hover{
+    opacity:0.9;
+}
+
+/*Mobile responsive of video.html*/
+@media(max-width:768px){
+    .Video-Demonstration{
+        padding:1rem;
+        gap:0.8rem;
+        max-width:100%;
+    }
+
+    .Video-Demonstration h1{
+        font-size:2rem;
+        margin-bottom:0.5rem;
+    }
+    
+    .Video-intro p{
+        font-size:0.95rem;
+        max-width:90%;
+        line-height:1.5;
+    }
+
+    .video-wrapper{
+        max-width:100%;
+        margin:0.8rem auto;
+        border-radius:12px;
+    }
+
+    .video-wrapper iframe{
+        border-radius:10px;
+    }
+
+    .video-link-box a{
+        padding:0.5rem 1rem;
+        font-size:0.9rem;
+    }
+}
+
+/*CSS for Site Report*/
+
+.Site-Report{
+    max-width:1000px;
+    margin:0.5rem auto;
+    padding:1rem 2rem;
+    background-color:#1a1a1f;
+    border-radius:12px;
+}
+
+.Site-Report > div{
+    margin-bottom:2rem;
+}
+
+.Site-Report h1{
+    font-size: 2.5rem;
+    font-weight:600;
+    color:royalblue;
+    text-shadow: 1px 0 0 #0ef,
+                -1px 0 0 #6366f1;
+    margin-bottom:15px;
+    text-align:center;
+    margin-left:0;
+    margin-right:0;
+}
+
+
+.Site-Report h2{
+    color:#7e7ec6;
+    font-size:1.5rem;
+    margin-bottom:1rem;
+    padding:0 6px;
+    font-weight:600;
+    margin-left:0;
+    margin-right:0;
+}
+
+.Site-Report p{
+    font-size: 1rem;
+    line-height:1.6rem;
+    margin-bottom:1rem;
+    margin-left:0;
+    margin-right:0;
+}
+
+.Page-block{
+    background-color:#1a1a1f;
+    padding:1rem 2rem;
+    border-radius:12px;
+    margin:0;
+    max-width:900px;
+}
+.Page-block h3{
+    font-size:1.3rem;
+    font-weight:600;
+    color:#337ed3;
+    margin-bottom:0.5rem;
+    text-align:left;
+}
+
+.Page-block p{
+    font-size:1rem;
+    line-height:1.6rem;
+    text-align:justify;
+    max-width:100%;
+    margin-left:0;
+    margin-right:0;
+}
+.Page-block>figure{
+    margin:0 auto;
+    text-align:center;
+    max-width:90%
+}
+
+.Page-block>figure img{
+    width:100%;
+    border-radius:7px;
+    display:block;
+    margin:1rem auto;
+
+}
+
+.Page-block > figure figcaption {
+    text-align: center; 
+    margin-top: 0.3rem;   
+    font-size: 1rem;
+    color: white;
+    font-weight:200;
+}
+
+/*Mobile reponsive view for sitereport.html*/
+@media(max-width:768px){
+    .Site-Report p{
+        font-size:0.95rem;
+        line-height:1.55;
+    }
+    .Page-block figure img{
+        max-width:100%;
+        height:auto;
+    }
+
+    .Page-block{
+        padding:1rem;
+    }   
+
 }
 
